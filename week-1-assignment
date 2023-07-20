@@ -1,0 +1,10 @@
+import pandas as pd
+dataset=pd.read_csv("path of csv file")
+print("printing dataset")
+print(dataset)
+print("\nb-only the first 5 rows in the dataset")
+print(dataset.head())
+print("\nc-remove the null values in the data")
+print(dataset.dropna(axis=0,inplace=True))
+print("\nd-printing max,min,mean,std,25%,50%,75%")
+print(dataset.describe())
