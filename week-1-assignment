@@ -1,0 +1,23 @@
+#question number 1
+import pandas as pd
+print("1-creating table and counting the number of rows and columns")
+data={"col1":[10,20,30],"col2":[40,50,60],"col3":[70,80,90],"col4":[100,110,120]}
+dataframe=pd.DataFrame(data)
+print(dataframe)
+print(dataframe.shape)
+
+#question number 2
+
+print("\n2-a")
+dataset=pd.read_csv("data.csv")
+print("printing dataset")
+print(dataset)
+
+print("\nb-only the first 5 rows in the dataset")
+print(dataset.head())
+
+print("\nc-remove the null values in the data")
+print(dataset.dropna(axis=0))
+
+print("\nd-printing max,min,mean,std,25%,50%,75%")
+print(dataset.describe())
