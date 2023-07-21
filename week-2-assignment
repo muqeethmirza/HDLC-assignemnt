@@ -1,28 +1,36 @@
 import numpy as np
 A1=np.array([11,33,22,44,66,55])
 A2=np.array([10,30,20,40,60,50])
+
 print("1-Extract the elements of array A1 from the index 2 to 5")
 print(A1[2:6])
+
 print("\n2-reshape the array A1 into (3,2)size")
 newarray=A1.reshape(3,2)
 print(newarray)
+
 print("\n3-join the two arrays A1 and A2")
 join=np.concatenate((A1,A2))
 print(join)
+
 print("\n4-split the array A1 into 3 arrays")
 split=np.array_split(A1,3)
 print(split[0])
 print(split[1])
 print(split[2])
+
 print("\n5-search for the number 44 in the array A1")
 search=np.where(A1==44)
 print(search)
+
 print("\n6-print all the even numbers of array A1 using search option")
 even=np.where(A1%2==0)
 print(even)
+
 print("\n7-sort the numbers of array A2")
 sort=np.sort(A2)
 print(sort)
+
 print("\n8-filter the odd numbers in array A1 using filter function")
 filter=A1%2!=0
 ar=A1[filter]
