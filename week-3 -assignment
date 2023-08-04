@@ -1,0 +1,53 @@
+#ASSIGNMENT--3
+import pandas as pd
+import matplotlib.pyplot as plt
+dataset=pd.read_csv("insurance.csv")
+# print(dataset.to_string())
+
+print("\nRead the given CSV file (insurance.csv) and write a code to perform the following operations on the data\n")
+print(" \n 1.    Remove the rows which is having NULL Values.\n\n")
+newdataset=dataset.dropna()
+print(newdataset.to_string())
+
+
+print("\n#2.    Fill the Empty cells in the “charges” column with\n")
+print("\n a--Mean\n")
+x=dataset["charges"].mean()
+meancharges=dataset["charges"].fillna(x)
+print(meancharges.to_string())
+
+
+print("\nb---Median")
+y=dataset["charges"].median()
+mediancharges=dataset["charges"].fillna(y)
+print(mediancharges.to_string())
+
+
+print("\nc---Mode\n")
+z=dataset["charges"].mode()[0]
+modecharges=dataset["charges"].fillna(z)
+print(modecharges.to_string())
+#
+#
+print("\n3.  Replace the values which is more than 60 in the “age” column with the value of 50.\n\n")
+for x in dataset.index:
+    if dataset.loc[x,"age"]>60:
+        dataset.loc[x,"age"]=50
+print(dataset.to_string())
+
+print("\n4.   Find out the duplicates in the dataset.\n\n")
+print(dataset.duplicated().to_string())
+print("\nremove duplicates\n")
+R_D=dataset.drop_duplicates()
+print(R_D.to_string())
+
+print("\n5.Find out the correlation between the data.\n")
+print(dataset.corr().to_string())
+
+print("\n6.   Draw a scatter plot between “age” and “bmi”\n")
+dataset.plot(kind="scatter",x="age",y="bmi")
+plt.show()
+
+print("\n7.   Draw a histogram plot on “age” column.\n")
+dataset["age"].plot(kind="hist")
+plt.show()
