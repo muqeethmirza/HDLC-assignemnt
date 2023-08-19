@@ -1,0 +1,45 @@
+#Assignment-4
+import pandas as pd
+import matplotlib.pyplot  as plt
+
+print("\n1--- Read the csv file named windpower.csv[attached]\n")
+ds=pd.read_csv("windpower.csv")
+print(ds.to_string())
+
+print("\n 2- Print the top 10 rows")
+print(ds.head(10).to_string())
+
+print("\n 3-Print the bottom 5 rows")
+print(ds.tail().to_string())
+
+print("\n 4-Display the structure of dataset with datatypes.")
+print(ds.info())
+
+print("\n 5-Find out Mean, Standard deviation, Min, Max for the column wind speed")
+print(ds["Wind Speed (m/s)"].describe())
+
+print("\n 6-Fill the NULL values with the average value of that column")
+avg=ds["Wind Speed (m/s)"].mean()
+print(f"average value is {avg}")
+fillavg=ds["Wind Speed (m/s)"].fillna(avg)
+print(fillavg.to_string())
+
+print("\n 7-Create a histogram plot for the column windspeed\n")
+ds["Wind Speed (m/s)"].plot(kind="hist")
+plt.title("Wind Speed (m/s)")
+plt.show()
+
+print("\n8.     Create scatter plot between windspeed and Theoretical power curve.\n")
+ds.plot(kind="scatter",x="Wind Speed (m/s)",y="Theoretical_Power_Curve (KWh)")
+plt.show()
+
+
+print("\n9.     Display the rows where windspeed <5.\n")
+L_t_5=(ds["Wind Speed (m/s)"]< 5 )
+filter=ds[L_t_5]
+print(filter.to_string())
+
+print("\n10.  Extract the rows where wind direction >200\n")
+G_T_200=(ds["Wind Direction (°)"]>200)
+ft=ds[G_T_200]
+print(ft)
