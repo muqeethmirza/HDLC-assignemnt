@@ -1,0 +1,31 @@
+#MINI PROJECT
+
+#Using KNN Algorithm for classification of Iris flower dataset.
+
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+
+# Load the Iris dataset
+iris = load_iris()
+#printing dataset
+# print(iris)
+#asssigning dependent and independent variables
+X = iris.data
+y = iris.target
+# print(X)
+# print(y)
+
+# Spliting the dataset into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+
+# Create a KNN classifier with K=5(neighbours)
+knn_classifier = KNeighborsClassifier(n_neighbors=5,metric="minkowski",p=2)
+
+# Training the classifier on the training data
+knn_classifier.fit(X_train, y_train)
+
+# Make predictions on the test data
+y_pred = knn_classifier.predict(X_test)
+print(y_pred)
+
