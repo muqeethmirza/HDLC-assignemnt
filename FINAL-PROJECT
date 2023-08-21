@@ -1,0 +1,37 @@
+#   ---------------------FINAL PROJECT--------
+#Mobile phone price fixed on the various factors like processor, RAM, Internal memory etc., There are 21 features given in the dataset. Classify the mobile price range as 0,1,2 or 3 based upon the features given in the dataset.
+# Class 0 – low cost
+# Class 1 – medium cost
+# Class 2 -  high cost
+# Class 3 – very high cost
+# Using SVM algorithm for classification.
+import numpy as np
+import pandas as pd
+
+#reaading dataset
+dataset=pd.read_csv("mobile data set.csv")
+
+#assigning dependent and independent variables
+x=dataset.iloc[:,[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]].values
+y=dataset.iloc[:,[20]].values
+
+#splitting the data into train test sets
+from sklearn.model_selection import train_test_split
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.25,random_state=0)
+
+#compression or preprocessing of data
+from sklearn.preprocessing import StandardScaler
+st_x=StandardScaler()
+x_train=st_x.fit_transform(x_train)
+x_test=st_x.fit_transform(x_test)
+
+# using support vector classifier to classify the data
+from sklearn.svm import SVC
+classifier=SVC(kernel="linear",random_state=0)
+y_reshape=np.ravel(y_train)
+classifier.fit(x_train,y_reshape)
+
+#prediction of price-(CLASSIFICATION)
+print(x_test)
+y_predict=classifier.predict(x_test)
+print(y_predict)
